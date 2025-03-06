@@ -2,7 +2,7 @@
 import { ref, onMounted, nextTick } from 'vue';
 import axios from 'axios';
 
-const API_BASE = 'http://127.0.0.1:8000/api';
+const API_BASE_URL = 'http://127.0.0.1:8000/api';
 
 const supportUser = ref({ id: 999, name: "Support", role: "support" }); // Dummy-Support-ID
 const activeChats = ref([]);
@@ -18,7 +18,7 @@ const chatContainer = ref(null);
 // Aktive Chats abrufen
 const fetchActiveChats = async () => {
   try {
-    const response = await axios.get(`${API_BASE}/chat/chats/active`);
+    const response = await axios.get(`${API_BASE_URL}/chat/chats/active`);
     activeChats.value = response.data;
   } catch (error) {
     console.error("Fehler beim Laden der aktiven Chats:", error);
@@ -36,7 +36,7 @@ const selectChat = async (chat) => {
 const fetchMessages = async () => {
   if (!selectedChat.value) return;
   try {
-    const response = await axios.get(`${API_BASE}/chat/chats/${selectedChat.value.id}/messages`);
+    const response = await axios.get(`${API_BASE_URL}/chat/chats/${selectedChat.value.id}/messages`);
     messages.value = response.data;
 
     // Nach Rendering nach unten scrollen
@@ -55,7 +55,7 @@ const fetchMessages = async () => {
 const sendMessage = async () => {
   if (!newMessage.value.trim() || !selectedChat.value) return;
   try {
-    await axios.post(`${API_BASE}/chat/messages/`, {
+    await axios.post(`${API_BASE_URL}/chat/messages/`, {
       chat_id: selectedChat.value.id,
       sender_id: supportUser.value.id, // Support sendet
       content: newMessage.value

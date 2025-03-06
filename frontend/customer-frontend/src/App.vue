@@ -2,7 +2,7 @@
 import { ref, onMounted, nextTick } from 'vue';
 import axios from 'axios';
 
-const API_BASE = 'http://127.0.0.1:8000/api';
+const API_BASE_URL = 'http://127.0.0.1:8000/api';
 
 const user = ref({ name: '', role: 'customer', id: null });
 const chatSession = ref(null);
@@ -15,7 +15,7 @@ const chatContainer = ref(null);
 // Benutzer erstellen
 const registerUser = async () => {
   try {
-    const response = await axios.post(`${API_BASE}/users/`, {
+    const response = await axios.post(`${API_BASE_URL}/users/`, {
       name: user.value.name,
       role: user.value.role
     });
@@ -29,7 +29,7 @@ const registerUser = async () => {
 const startChat = async () => {
   if (!user.value.id) return alert("Bitte erst registrieren!");
   try {
-    const response = await axios.post(`${API_BASE}/chat/chats/`, {
+    const response = await axios.post(`${API_BASE_URL}/chat/chats/`, {
       customer_id: user.value.id,
       customer_name: user.value.name
     });
@@ -45,7 +45,7 @@ const startChat = async () => {
 const sendMessage = async () => {
   if (!newMessage.value.trim()) return;
   try {
-    await axios.post(`${API_BASE}/chat/messages/`, {
+    await axios.post(`${API_BASE_URL}/chat/messages/`, {
       chat_id: chatSession.value.id,
       sender_id: user.value.id,
       content: newMessage.value
@@ -61,7 +61,7 @@ const sendMessage = async () => {
 const fetchMessages = async () => {
   if (!chatSession.value) return;
   try {
-    const response = await axios.get(`${API_BASE}/chat/chats/${chatSession.value.id}/messages`);
+    const response = await axios.get(`${API_BASE_URL}/chat/chats/${chatSession.value.id}/messages`);
     messages.value = response.data;
 
     // Warten, bis Vue das DOM aktualisiert hat, dann bis zum ende scrollen
