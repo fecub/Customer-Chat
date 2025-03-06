@@ -99,9 +99,6 @@ cd frontend/customer-frontend
 npm install
 npm run dev
 ```
-
-The app is running at: ``
-
 ---
 
 ## 🖥 **3. Support Frontend (Vue 3 + Vuetify)**
