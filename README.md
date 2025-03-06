@@ -1,6 +1,4 @@
-# Customer-Chat
-
-# 📞 Kunden-Support-Chat mit FastAPI & Vue.js
+# Customer-Chat mit FastAPI & Vue.js
 
 Dieses Projekt ist ein **Echtzeit-Kunden-Support-Chat**, in dem Kunden mit Support-Mitarbeitern kommunizieren können.\
 Es besteht aus:
