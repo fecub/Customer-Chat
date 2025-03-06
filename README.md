@@ -125,7 +125,7 @@ npm run dev
 
 ## 🔍 **5. Conclusion**
 
-This project offers a **fast and scalable chat solution** for customer support. 🚀\
+This project offers a **fast and scalable chat solution** for customer support. 🚀
 
 ---
 
