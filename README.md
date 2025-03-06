@@ -85,8 +85,8 @@ fastapi dev app.py
 
 The server is now running at ``\
 **Swagger Documentation**
-"/": [**http://127.0.0.1:8000/docs**](http://127.0.0.1:8000/docs)
-"/api": [**http://127.0.0.1:8000/api/docs**](http://127.0.0.1:8000/api/docs)
+- "/": [**http://127.0.0.1:8000/docs**](http://127.0.0.1:8000/docs)
+- "/api": [**http://127.0.0.1:8000/api/docs**](http://127.0.0.1:8000/api/docs)
 
 ---
 
