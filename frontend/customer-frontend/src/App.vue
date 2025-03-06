@@ -21,13 +21,13 @@ const registerUser = async () => {
     });
     user.value.id = response.data.id;
   } catch (error) {
-    console.error("Fehler bei der Registrierung:", error);
+    console.error("Error during registration:", error);
   }
 };
 
 // Chat starten
 const startChat = async () => {
-  if (!user.value.id) return alert("Bitte erst registrieren!");
+  if (!user.value.id) return alert("Please register first!");
   try {
     const response = await axios.post(`${API_BASE_URL}/chat/chats/`, {
       customer_id: user.value.id,
@@ -37,7 +37,7 @@ const startChat = async () => {
     fetchMessages();
     startPolling();
   } catch (error) {
-    console.error("Fehler beim Starten des Chats:", error);
+    console.error("Error starting the chat:", error);
   }
 };
 
@@ -53,7 +53,7 @@ const sendMessage = async () => {
     newMessage.value = '';
     fetchMessages();
   } catch (error) {
-    console.error("Fehler beim Senden der Nachricht:", error);
+    console.error("Error sending the message:", error);
   }
 };
 
@@ -64,7 +64,7 @@ const fetchMessages = async () => {
     const response = await axios.get(`${API_BASE_URL}/chat/chats/${chatSession.value.id}/messages`);
     messages.value = response.data;
 
-    // Warten, bis Vue das DOM aktualisiert hat, dann bis zum ende scrollen
+    // Wait for Vue to update the DOM, then scroll to the end
     await nextTick(() => {
       const chatBox = chatContainer.value?.$el;
       if (chatBox) {
@@ -72,7 +72,7 @@ const fetchMessages = async () => {
       }
     });
   } catch (error) {
-    console.error("Fehler beim Abrufen der Nachrichten:", error);
+    console.error("Error fetching messages:", error);
   }
 };
 
@@ -90,17 +90,17 @@ onMounted(() => {
 <template>
   <v-container class="fill-height d-flex flex-column align-center justify-center">
     <v-card class="pa-5" width="400">
-      <v-card-title class="text-h5 text-center mb-4">Kundenservice Chat</v-card-title>
+      <v-card-title class="text-h5 text-center mb-4">Customer Service Chat</v-card-title>
 
-      <!-- Benutzerregistrierung -->
+      <!-- User Registration -->
       <v-row v-if="!user.id" class="mb-4">
-        <v-text-field v-model="user.name" label="Dein Name" outlined dense></v-text-field>
-        <v-btn color="primary" block @click="registerUser">Registrieren</v-btn>
+        <v-text-field v-model="user.name" label="Your Name" outlined dense></v-text-field>
+        <v-btn color="primary" block @click="registerUser">Register</v-btn>
       </v-row>
 
-      <!-- Chat starten -->
+      <!-- Start Chat -->
       <v-row v-if="user.id && !chatSession" class="mb-4">
-        <v-btn color="green" block @click="startChat">Chat starten</v-btn>
+        <v-btn color="green" block @click="startChat">Start Chat</v-btn>
       </v-row>
 
       <!-- Chat UI -->
@@ -116,9 +116,9 @@ onMounted(() => {
           </v-card-text>
         </v-card>
 
-        <!-- Nachrichteneingabe -->
+        <!-- Message Input -->
         <v-row class="mt-2 ml-1 mr-1">
-          <v-text-field v-model="newMessage" label="Nachricht..." outlined dense
+          <v-text-field v-model="newMessage" label="Message..." outlined dense
             @keyup.enter="sendMessage"></v-text-field>
           <v-btn height="70%" color="primary" @click="sendMessage">➤</v-btn>
         </v-row>

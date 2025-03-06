@@ -12,34 +12,33 @@ const newMessage = ref('');
 const pollingInterval = 2000;
 let polling = null;
 
-// Ref für das Chat-Fenster
 const chatContainer = ref(null);
 
-// Aktive Chats abrufen
+// Fetch active chats
 const fetchActiveChats = async () => {
   try {
     const response = await axios.get(`${API_BASE_URL}/chat/chats/active`);
     activeChats.value = response.data;
   } catch (error) {
-    console.error("Fehler beim Laden der aktiven Chats:", error);
+    console.error("Error loading active chats:", error);
   }
 };
 
-// Chat auswählen & Nachrichten abrufen
+// Select chat & fetch messages
 const selectChat = async (chat) => {
   selectedChat.value = chat;
   fetchMessages();
   startPolling();
 };
 
-// Nachrichten abrufen
+// Fetch messages
 const fetchMessages = async () => {
   if (!selectedChat.value) return;
   try {
     const response = await axios.get(`${API_BASE_URL}/chat/chats/${selectedChat.value.id}/messages`);
     messages.value = response.data;
 
-    // Nach Rendering nach unten scrollen
+    // Scroll to bottom after rendering
     await nextTick(() => {
       const chatBox = chatContainer.value?.$el;
       if (chatBox) {
@@ -47,23 +46,23 @@ const fetchMessages = async () => {
       }
     });
   } catch (error) {
-    console.error("Fehler beim Abrufen der Nachrichten:", error);
+    console.error("Error fetching messages:", error);
   }
 };
 
-// Nachricht senden
+// Send message
 const sendMessage = async () => {
   if (!newMessage.value.trim() || !selectedChat.value) return;
   try {
     await axios.post(`${API_BASE_URL}/chat/messages/`, {
       chat_id: selectedChat.value.id,
-      sender_id: supportUser.value.id, // Support sendet
+      sender_id: supportUser.value.id, // Support sends
       content: newMessage.value
     });
     newMessage.value = '';
     fetchMessages();
   } catch (error) {
-    console.error("Fehler beim Senden der Nachricht:", error);
+    console.error("Error sending message:", error);
   }
 };
 
@@ -84,18 +83,18 @@ onMounted(() => {
     <v-card class="pa-5" width="600">
       <v-card-title class="text-h5 text-center">Support Chat</v-card-title>
 
-      <!-- Aktive Chats -->
+      <!-- Active Chats -->
       <v-list>
         <v-list-item v-for="chat in activeChats" :key="chat.id" @click="selectChat(chat)" class="mb-2" dense>
           <v-list-item-title>
-            <v-icon class="mr-2">mdi-message</v-icon> Kunde {{ chat.customer_id }}: {{ chat.customer_name }}
+            <v-icon class="mr-2">mdi-message</v-icon> Customer {{ chat.customer_id }}: {{ chat.customer_name }}
           </v-list-item-title>
         </v-list-item>
       </v-list>
 
       <!-- Chat UI -->
       <v-card v-if="selectedChat" elevation="1" class="pa-2 mt-3" width="100%" height="400">
-        <v-card-title class="text-h6">Chat mit Kunde {{ selectedChat.customer_id }}</v-card-title>
+        <v-card-title class="text-h6">Chat with Customer {{ selectedChat.customer_id }}</v-card-title>
         <v-card-text ref="chatContainer" class="overflow-auto chat-container">
           <v-container v-for="msg in messages" :key="msg.id"
             :class="msg.sender_id === supportUser.id ? 'text-right' : 'text-left'" class="pa-1">
@@ -106,9 +105,9 @@ onMounted(() => {
         </v-card-text>
       </v-card>
 
-      <!-- Nachrichteneingabe -->
+      <!-- Message Input -->
       <v-row v-if="selectedChat" class="mt-2 ml-1 mr-1">
-        <v-text-field v-model="newMessage" label="Nachricht..." outlined dense
+        <v-text-field v-model="newMessage" label="Message..." outlined dense
           @keyup.enter="sendMessage"></v-text-field>
         <v-btn height="55" color="primary" @click="sendMessage">➤</v-btn>
       </v-row>

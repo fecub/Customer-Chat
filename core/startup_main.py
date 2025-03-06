@@ -5,5 +5,5 @@ def startup_main():
     db = next(get_db())
     engine = db.get_bind()
 
-    # Datenbanktabellen erstellen
+    # Create database tables
     Base.metadata.create_all(bind=engine)

@@ -2,7 +2,7 @@ from pydantic import BaseModel
 
 class UserBase(BaseModel):
     name: str
-    role: str  # "customer" oder "support"
+    role: str  # "customer" or "support"
 
 class UserCreate(UserBase):
     pass

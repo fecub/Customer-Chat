@@ -11,10 +11,10 @@ api = create_api()
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],  # Erlaubt ALLE Domains (in Produktion einschränken!)
+    allow_origins=["*"],  # Allows ALL domains (restrict in production!)
     allow_credentials=True,
-    allow_methods=["*"],  # Erlaubt GET, POST, PUT, DELETE etc.
-    allow_headers=["*"],  # Erlaubt alle Header
+    allow_methods=["*"],  # Allows GET, POST, PUT, DELETE etc.
+    allow_headers=["*"],  # Allows all Header
 )
 
 app.mount("/api", api)

@@ -1,31 +1,31 @@
-# Customer-Chat mit FastAPI & Vue.js
+# Customer-Chat with FastAPI & Vue.js
 
-Dieses Projekt ist ein **Echtzeit-Kunden-Support-Chat**, in dem Kunden mit Support-Mitarbeitern kommunizieren können.\
-Es besteht aus:
+This project is a **real-time customer support chat** where customers can communicate with support agents.\
+It consists of:
 
-- **Backend**: FastAPI + SQLAlchemy für die Datenbankverwaltung
-- **Kunden-Frontend**: Vue 3 + Vuetify für die Benutzeroberfläche der Kunden
-- **Support-Frontend**: Eigenständige Vue 3 + Vuetify App für den Support-Mitarbeiter
-
----
-
-## 🚀 **Funktionen**
-
-✅ Kunden können sich registrieren und einen Chat mit dem Support starten\
-✅ Support-Mitarbeiter sehen eine Liste aller aktiven Chats und können darauf antworten\
-✅ Nachrichten werden in Echtzeit synchronisiert \
-✅ SQLAlchemy ORM zur Verwaltung der Benutzer, Chats und Nachrichten
+- **Backend**: FastAPI + SQLAlchemy for database management
+- **Customer Frontend**: Vue 3 + Vuetify for the customer interface
+- **Support Frontend**: Separate Vue 3 + Vuetify app for support agents
 
 ---
 
-## 📦 **Projektstruktur**
+## 🚀 **Features**
+
+✅ Customers can register and start a chat with support\
+✅ Support agents see a list of all active chats and can respond\
+✅ Messages are synchronized in real-time\
+✅ SQLAlchemy ORM for managing users, chats, and messages
+
+---
+
+## 📦 **Project Structure**
 
 ```plaintext
 customer-chat-backend/
 │── core/
 │   ├── api/
 │   │   ├── __init__.py
-│   │   ├── controller.py    # API-Endpunkte für Kunden & Support
+│   │   ├── controller.py    # API endpoints for customers & support
 │   ├── auth/
 │   │   ├── __init__.py
 │   │   ├── router.py
@@ -34,33 +34,33 @@ customer-chat-backend/
 │   │   ├── router.py
 │   ├── database/
 │   │   ├── __init__.py
-│   │   ├── session.py       # Datenbankverbindung & Session-Handling
+│   │   ├── session.py       # Database connection & session handling
 │   ├── models/
 │   │   ├── __init__.py
-│   │   ├── user.py          # User-Modell (Kunden & Support)
-│   │   ├── chat.py          # Chat- & Nachrichten-Modelle
+│   │   ├── user.py          # User model (customers & support)
+│   │   ├── chat.py          # Chat & message models
 │   ├── schema/
 │   │   ├── __init__.py
-│   │   ├── chat_schema.py   # Pydantic-Schemas für API-Responses
+│   │   ├── chat_schema.py   # Pydantic schemas for API responses
 │   │   ├── user_schema.py
-│── startup_main.py          # Initialisiert die Datenbank
-│── app.py                   # FastAPI Haupt-App
-│── requirements.txt         # Python-Abhängigkeiten
+│── startup_main.py          # Initializes the database
+│── app.py                   # FastAPI main app
+│── requirements.txt         # Python dependencies
 │── README.md
 ```
 
 Frontend:
 
 ```plaintext
-frontend/customer-frontend/      # Kunden-Frontend (Vue 3 + Vuetify)
-frontend/support-frontend/       # Support-Frontend (Vue 3 + Vuetify)
+frontend/customer-frontend/      # Customer frontend (Vue 3 + Vuetify)
+frontend/support-frontend/       # Support frontend (Vue 3 + Vuetify)
 ```
 
 ---
 
-## 🛠 **1️. Backend-Installation (FastAPI)**
+## 🛠 **1️. Backend Installation (FastAPI)**
 
-### **📉 Voraussetzungen**
+### **📉 Prerequisites**
 
 - **Python 3.10+**
 - **SQLite**
@@ -77,20 +77,20 @@ venv\Scripts\activate     # Windows
 pip install -r requirements.txt
 ```
 
-### **📉 Datenbank migrieren & Server starten**
+### **📉 Migrate Database & Start Server**
 
 ```bash
 fastapi dev app.py
 ```
 
-Der Server läuft jetzt unter ``\
-**Swagger-Dokumentation**
+The server is now running at ``\
+**Swagger Documentation**
 "/": [**http://127.0.0.1:8000/docs**](http://127.0.0.1:8000/docs)
 "/api": [**http://127.0.0.1:8000/api/docs**](http://127.0.0.1:8000/api/docs)
 
 ---
 
-## 🖥 **2️. Kunden-Frontend (Vue 3 + Vuetify)**
+## 🖥 **2️. Customer Frontend (Vue 3 + Vuetify)**
 
 ### **📉 Installation**
 
@@ -100,11 +100,11 @@ npm install
 npm run dev
 ```
 
-Die App läuft unter: ``
+The app is running at: ``
 
 ---
 
-## 🖥 **3️. Support-Frontend (Vue 3 + Vuetify)**
+## 🖥 **3️. Support Frontend (Vue 3 + Vuetify)**
 
 ### **📉 Installation**
 
@@ -116,23 +116,23 @@ npm run dev
 
 ---
 
-## 📈 **4. Weiterentwicklung**
+## 📈 **4. Further Development**
 
-- ✅ **Echte Echtzeit-Updates mit WebSockets statt Polling**
-- ✅ **Auth-System für Kunden & Support mit JWT**
-- ✅ **Datenbank auf PostgreSQL umstellen**
-- ✅ **Docker-Container für einfaches Deployment**
-- ✅ **Intuitiveres Design**
-
----
-
-## 🔍 **5. Fazit**
-
-Dieses Projekt bietet eine **schnelle und skalierbare Chat-Lösung** für Kunden-Support. 🚀\
+- ✅ **Real real-time updates with WebSockets instead of polling**
+- ✅ **Auth system for customers & support with JWT**
+- ✅ **Switch database to PostgreSQL**
+- ✅ **Docker container for easy deployment**
+- ✅ **More intuitive design**
 
 ---
 
-### **👨‍💻 Autor: Dein Name**
+## 🔍 **5. Conclusion**
 
-💎 **E-Mail**: [ferit.cubukcuoglu@yazcub.com](mailto:ferit.cubukcuoglu@yazcub.com)\
+This project offers a **fast and scalable chat solution** for customer support. 🚀\
+
+---
+
+### **👨‍💻 Author: Ferit Cubukcuoglu**
+
+💎 **Email**: [ferit.cubukcuoglu@yazcub.com](mailto:ferit.cubukcuoglu@yazcub.com)\
 🔗 **GitHub**: [github.com/fecub](https://github.com/fecub)
