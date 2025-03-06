@@ -58,7 +58,7 @@ frontend/support-frontend/       # Support frontend (Vue 3 + Vuetify)
 
 ---
 
-## 🛠 **1️. Backend Installation (FastAPI)**
+## 🛠 **1. Backend Installation (FastAPI)**
 
 ### **📉 Prerequisites**
 
@@ -90,7 +90,7 @@ The server is now running at ``\
 
 ---
 
-## 🖥 **2️. Customer Frontend (Vue 3 + Vuetify)**
+## 🖥 **2. Customer Frontend (Vue 3 + Vuetify)**
 
 ### **📉 Installation**
 
@@ -104,7 +104,7 @@ The app is running at: ``
 
 ---
 
-## 🖥 **3️. Support Frontend (Vue 3 + Vuetify)**
+## 🖥 **3. Support Frontend (Vue 3 + Vuetify)**
 
 ### **📉 Installation**
 
