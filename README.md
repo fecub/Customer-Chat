@@ -13,7 +13,7 @@ Es besteht aus:
 
 ✅ Kunden können sich registrieren und einen Chat mit dem Support starten\
 ✅ Support-Mitarbeiter sehen eine Liste aller aktiven Chats und können darauf antworten\
-✅ Nachrichten werden in Echtzeit synchronisiert (Polling oder WebSockets möglich)\
+✅ Nachrichten werden in Echtzeit synchronisiert \
 ✅ SQLAlchemy ORM zur Verwaltung der Benutzer, Chats und Nachrichten
 
 ---
@@ -43,9 +43,9 @@ customer-chat-backend/
 │   │   ├── __init__.py
 │   │   ├── chat_schema.py   # Pydantic-Schemas für API-Responses
 │   │   ├── user_schema.py
-│   ├── startup_main.py      # Initialisiert die Datenbank
+│── startup_main.py          # Initialisiert die Datenbank
 │── app.py                   # FastAPI Haupt-App
-│── requirements.txt          # Python-Abhängigkeiten
+│── requirements.txt         # Python-Abhängigkeiten
 │── README.md
 ```
 
@@ -58,7 +58,7 @@ frontend/support-frontend/       # Support-Frontend (Vue 3 + Vuetify)
 
 ---
 
-## 🛠 **1️ Backend-Installation (FastAPI)**
+## 🛠 **1️. Backend-Installation (FastAPI)**
 
 ### **📉 Voraussetzungen**
 
